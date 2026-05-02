@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="2R Services fait, monte et optimise des PC adapté en France pour le gaming, le streaming et le travail professionnel." />
+  <title>2R Services — Montage PC adapté</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+      --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+      --color-bg: #f7f6f2; --color-surface: #f9f8f5; --color-surface-2: #ffffff; --color-surface-offset: #efede8; --color-border: #d4d1ca; --color-divider: #dfdcd5; --color-text: #1f1d18; --color-text-muted: #67655f; --color-text-faint: #a9a59d; --color-text-inverse: #f7f6f2; --color-primary: #0d6b6f; --color-primary-hover: #0a575a; --color-primary-highlight: #d8e7e5; --color-success: #437a22; --shadow-sm: 0 1px 2px rgba(25, 23, 18, 0.06); --shadow-md: 0 12px 32px rgba(25, 23, 18, 0.08); --shadow-lg: 0 24px 60px rgba(25, 23, 18, 0.14); --radius-sm: 0.5rem; --radius-md: 0.85rem; --radius-lg: 1.25rem; --radius-xl: 1.75rem; --radius-full: 9999px; --font-body: 'Satoshi', Inter, sans-serif; --font-display: 'Satoshi', Inter, sans-serif; --content-default: 1120px; --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    [data-theme="dark"] { --color-bg:#111111; --color-surface:#171717; --color-surface-2:#1d1d1d; --color-surface-offset:#242424; --color-border:#333333; --color-divider:#2b2b2b; --color-text:#ededea; --color-text-muted:#b3b0a8; --color-text-faint:#7d7b76; --color-text-inverse:#111111; --color-primary:#62a8ad; --color-primary-hover:#84c0c3; --color-primary-highlight:#233436; --color-success:#7bb356; --shadow-sm:0 1px 2px rgba(0,0,0,.18); --shadow-md:0 12px 32px rgba(0,0,0,.28); --shadow-lg:0 24px 60px rgba(0,0,0,.42); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { min-height: 100vh; font-family: var(--font-body); font-size: var(--text-base); line-height: 1.6; color: var(--color-text); background: radial-gradient(circle at top right, color-mix(in srgb, var(--color-primary) 10%, transparent), transparent 28%), linear-gradient(180deg, var(--color-bg), var(--color-surface)); }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+    .container { width: min(calc(100% - 2rem), var(--content-default)); margin-inline: auto; }
+    
+    
+    
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--color-primary); color: var(--color-text-inverse); padding: .8rem 1rem; border-radius: var(--radius-full); z-index: 9999; }
+    .skip-link:focus, .skip-link:focus-visible { top: 1rem; }
+
+    .topbar { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(16px); background: color-mix(in srgb, var(--color-bg) 84%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 78px; }
+    .brand { display: inline-flex; align-items: center; gap: .9rem; font-weight: 800; letter-spacing: -.03em; }
+    .brand-text small { display:block; font-size: var(--text-xs); letter-spacing: .18em; text-transform: uppercase; color: var(--color-text-muted); }
+    .brand-text span { display:block; font-size: 1.05rem; }
+    .nav-links { display:flex; align-items:center; gap: var(--space-6); }
+    .nav-links a { font-size: var(--text-sm); color: var(--color-text-muted); }
+    .nav-links a:hover { color: var(--color-text); }
+    .actions { display:flex; align-items:center; gap: .75rem; }
+    .theme-toggle, .menu-toggle { width: 44px; height: 44px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent); background: var(--color-surface-2); }
+    .menu-toggle { display:none; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; min-height: 48px; padding: .85rem 1.2rem; border-radius: var(--radius-full); transition: transform var(--transition-interactive), background var(--transition-interactive), color var(--transition-interactive), border-color var(--transition-interactive); font-weight: 700; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--color-primary); color: var(--color-text-inverse); }
+    .btn-primary:hover { background: var(--color-primary-hover); }
+    .btn-secondary { background: var(--color-surface-2); border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); }
+    .hero { padding: clamp(4rem, 8vw, 7rem) 0 clamp(3rem, 8vw, 6rem); }
+    .hero-grid { display:grid; grid-template-columns: 1.15fr .85fr; gap: var(--space-10); align-items: center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:.5rem; padding:.45rem .8rem; border-radius:999px; background: var(--color-primary-highlight); color: var(--color-primary); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .12em; font-weight: 800; margin-bottom: var(--space-5); }
+    h1 { font-family: var(--font-display); font-size: clamp(2.6rem, 7vw, 5.2rem); line-height: 0.98; letter-spacing: -.05em; max-width: 12ch; }
+    .hero p { margin-top: var(--space-5); color: var(--color-text-muted); max-width: 58ch; }
+    .hero-cta { display:flex; flex-wrap:wrap; gap: .9rem; margin-top: var(--space-8); }
+    .hero-points { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); margin-top: var(--space-10); }
+    .hero-points li, .trust-list li, .process li { list-style:none; padding: var(--space-4); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-surface-2) 75%, transparent); border: 1px solid color-mix(in srgb, var(--color-text) 9%, transparent); }
+    .hero-card { padding: var(--space-8); border-radius: var(--radius-xl); background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface-2) 88%, transparent), var(--color-surface)); border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); box-shadow: var(--shadow-lg); position: relative; overflow: hidden; }
+    .specs { display:grid; gap: var(--space-4); position:relative; z-index:1; }
+    .spec { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding: .95rem 1rem; border-radius: 1rem; background: color-mix(in srgb, var(--color-bg) 82%, transparent); border:1px solid color-mix(in srgb, var(--color-text) 8%, transparent); }
+    .spec strong { font-size: var(--text-sm); }
+    .spec span { color: var(--color-text-muted); font-size: var(--text-sm); }
+    .section { padding: clamp(3.5rem, 7vw, 6rem) 0; }
+    .section-head { display:flex; justify-content:space-between; gap: var(--space-6); align-items:end; margin-bottom: var(--space-10); }
+    .section-head h2 { font-size: clamp(2rem, 3vw, 3rem); line-height: 1.02; letter-spacing: -.04em; }
+    .panel { background: color-mix(in srgb, var(--color-surface-2) 82%, transparent); border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); }
+    .services-grid, .proof-grid, .contact-grid, .stats-grid { display:grid; gap: var(--space-5); }
+    .services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .service-card { padding: var(--space-8); }
+    .price { display:inline-flex; align-items:center; padding:.4rem .7rem; border-radius:999px; background: var(--color-primary-highlight); color: var(--color-primary); font-size: var(--text-sm); font-weight: 800; margin: 1rem 0 1.2rem; }
+    .service-card h3 { font-size: 1.3rem; letter-spacing: -.03em; }
+    .service-card p, .service-card li { color: var(--color-text-muted); }
+    .service-card ul { margin-top: 1rem; display:grid; gap: .65rem; }
+    .service-card li { list-style:none; display:flex; gap:.6rem; }
+    .service-card li::before { content:"•"; color: var(--color-primary); font-weight: 900; }
+    .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .stat { padding: var(--space-6); }
+    .stat strong { display:block; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -.05em; }
+    .stat span { color: var(--color-text-muted); }
+    .proof-grid { grid-template-columns: 1.1fr .9fr; }
+    .testimonial, .trust-panel { padding: var(--space-8); }
+    blockquote { font-size: clamp(1.3rem, 2vw, 1.8rem); line-height: 1.3; letter-spacing: -.03em; max-width: 28ch; }
+    .client { margin-top: var(--space-5); color: var(--color-text-muted); }
+    .trust-list, .process { display:grid; gap: var(--space-4); }
+    .trust-list li strong, .process li strong { display:block; margin-bottom: .25rem; }
+    .steps-grid { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    .step-card, .faq-card { padding: 1.5rem; }
+    .step-card h4, .faq-card h4 { margin-bottom: .75rem; line-height: 1.2; }
+    .faq-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-5); }
+    .contact-grid { grid-template-columns: .95fr 1.05fr; align-items: stretch; }
+    .contact-card, .contact-form { padding: var(--space-8); }
+    .contact-lines { display:grid; gap: 1rem; margin-top: var(--space-6); }
+    .contact-item { padding: 1rem 1rem 1rem 1.1rem; border-left: 3px solid color-mix(in srgb, var(--color-primary) 28%, transparent); background: color-mix(in srgb, var(--color-bg) 84%, transparent); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+    form { display:grid; gap: 1rem; }
+    label { font-size: var(--text-sm); font-weight: 700; display:grid; gap:.45rem; }
+    input, textarea, select { width:100%; min-height: 50px; border-radius: .95rem; border: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent); background: var(--color-surface-2); padding: .95rem 1rem; color: var(--color-text); }
+    textarea { min-height: 140px; resize: vertical; }
+    .form-message { margin-top: 1rem; }
+    footer { padding: 2rem 0 3rem; color: var(--color-text-muted); }
+    .footer-inner { display:flex; justify-content:space-between; gap: var(--space-4); align-items:center; padding-top: var(--space-6); border-top:1px solid color-mix(in srgb, var(--color-text) 10%, transparent); }
+    .badge-row { display:flex; flex-wrap:wrap; gap:.75rem; margin-top: var(--space-6); }
+    .badge { padding:.5rem .8rem; border-radius:999px; background: color-mix(in srgb, var(--color-surface-2) 70%, transparent); border:1px solid color-mix(in srgb, var(--color-text) 10%, transparent); font-size: var(--text-sm); color: var(--color-text-muted); }
+    .error-message { font-size: .875rem; color: #ef4444; min-height: 1.25rem; }
+    @media (max-width: 980px) { .hero-grid, .proof-grid, .contact-grid, .services-grid, .stats-grid, .steps-grid { grid-template-columns: 1fr; } .section-head, .footer-inner { flex-direction: column; align-items: flex-start; } .nav-links { position:absolute; left:1rem; right:1rem; top:calc(100% + .75rem); display:none; flex-direction:column; align-items:flex-start; padding:1rem; border-radius:1rem; background:var(--color-surface-2); border:1px solid color-mix(in srgb, var(--color-text) 10%, transparent); box-shadow:var(--shadow-md);} .nav-links.open { display:flex; } .menu-toggle { display:inline-grid; place-items:center; } .nav .btn-primary { display:none; } }
+    @media (max-width: 640px) { .container { width: min(calc(100% - 1.25rem), var(--content-default)); } .nav { min-height: 70px; } h1 { max-width: 11ch; } .hero-points { grid-template-columns: 1fr; } .hero-card, .service-card, .testimonial, .trust-panel, .contact-card, .contact-form { padding: var(--space-6); } .btn { width: 100%; } .hero-cta { flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#accueil" aria-label="2R Services accueil">
+        <img src="logo.png" alt="2R Services" style="height:46px;">
+        <span class="brand-text"><small>Atelier PC</small><span>2R Services</span></span>
+      </a>
+      <nav class="nav-links" id="navMenu" aria-label="Navigation principale">
+        <a href="#prestations">Prestations</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#processus">Processus</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="actions">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Basculer le thème">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="menu-toggle" type="button" aria-controls="navMenu" aria-expanded="false" aria-label="Ouvrir le menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <a class="btn btn-primary" href="#contact">Demander un devis</a>
+      </div>
+    </div>
+  </header>
+  <main id="contenu" tabindex="-1">
+    <section class="hero" id="accueil">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Prestations • Fiabilité • Conseils clairs</span>
+          <h1>Prestations claires pour votre PC.</h1>
+          <p>2R Services monte des PC pour le gaming, le streaming et le travail. Chaque machine est assemblée proprement et testée avant livraison.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#contact">Demander un devis</a>
+            <a class="btn btn-secondary" href="#prestations">Voir la prestation</a>
+          </div>
+          <ul class="hero-points" role="list">
+            <li><strong>Garantie jusqu’à 2 ans</strong><br><span>Suivi après livraison et assistance claire.</span></li>
+            <li><strong>Paiement sécurisé</strong><br><span>Une expérience simple, sans zones floues.</span></li>
+            <li><strong>Composants propre</strong><br><span>Sélection cohérente selon votre budget et vos usages.</span></li>
+            <li><strong>Support dédié</strong><br><span>Un accompagnement humain et réactif.</span></li>
+          </ul>
+        </div>
+        <aside class="hero-card" aria-label="Configuration type">
+          <div class="specs">
+            <div>
+              <span class="eyebrow" style="margin-bottom: 0;">Configuration type</span>
+              <h2 style="font-size: var(--text-xl); margin-top: 1rem;">PC gaming / streaming</h2>
+              <p style="margin-top: .75rem; color: var(--color-text-muted);">Assemblage propre, BIOS à jour et tests de stabilité avant remise.</p>
+            </div>
+            <div class="spec"><strong>Montage</strong><span>Câblage propre</span></div>
+            <div class="spec"><strong>Optimisation</strong><span>Windows, pilotes, tests</span></div>
+            <div class="spec"><strong>Livraison</strong><span>France entière</span></div>
+            <div class="spec"><strong>Assistance</strong><span>Selon la formule choisie</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <section class="section" aria-label="Indicateurs de confiance">
+      <div class="container stats-grid">
+        <article class="panel stat"><strong>3 offres</strong><span>Claires, lisibles et simples à comparer.</span></article>
+        <article class="panel stat"><strong>1 interlocuteur</strong><span>Échange direct pour cadrer le projet sans flou.</span></article>
+        <article class="panel stat"><strong>100%</strong><span>Paiement annoncé comme sécurisé.</span></article>
+        <article class="panel stat"><strong>France</strong><span>Livraison et accompagnement à distance.</span></article>
+      </div>
+    </section>
+            <section class="section" id="prestations">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Prestations</span>
+            <h2>Prestations adaptées à votre besoin.</h2>
+          </div>
+        </div>
+        <div class="services-grid" style="grid-template-columns: 1fr; max-width: 700px; margin-inline: auto;">
+          <article class="panel service-card" style="padding: 2.5rem;">
+            <span class="eyebrow">Montage et optimisation</span>
+            <h3 style="font-size: 1.7rem; line-height: 1.15;">Montage PC</h3>
+            <span class="price">250,00 € + frais de port</span>
+            <p style="max-width: 60ch;">
+              Montage complet, câblage propre, installation logicielle et tests avant livraison.
+            </p>
+            <ul role="list" style="margin-top: 1.25rem;">
+              <li>Montage complet du PC avec câblage propre et finition soignée.</li>
+              <li>Vérification de compatibilité avant montage.</li>
+              <li>Installation de Windows 11 Pro et des pilotes nécessaires.</li>
+              <li>Tests de démarrage et vérification de stabilité.</li>
+              <li>Conseils de prise en main et d’utilisation.</li>
+            </ul>
+            <p style="margin-top: 1.2rem; color: var(--color-text-muted); font-size: var(--text-sm);">
+              Convient pour un PC gaming, bureautique ou création de contenu.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="realisations">
+      <div class="container proof-grid">
+        <article class="panel testimonial"><span class="eyebrow">Avis client</span><blockquote>“Service rapide, PC performant livré comme prévu.”</blockquote><p class="client">Lucas, Lyon</p><div class="badge-row" aria-label="Points forts"><span class="badge">Montage propre</span><span class="badge">Explications simples</span><span class="badge">Livraison suivie</span></div></article>
+        <aside class="panel trust-panel"><span class="eyebrow">Pourquoi choisir 2R Services</span><ul class="trust-list" role="list"><li><strong>Sérieux et clarté</strong><span>Un message de sérieux qui rassure immédiatement le visiteur.</span></li><li><strong>Composants adaptés</strong><span>Un positionnement plus propre et mieux mis en valeur.</span></li><li><strong>Optimisation soignée</strong><span>Le bénéfice client est expliqué, pas juste listé.</span></li><li><strong>Contact direct</strong><span>Un échange direct pour avancer simplement.</span></li></ul></aside>
+      </div>
+    </section>
+    <section class="section" id="processus"><div class="container"><div class="section-head"><div><span class="eyebrow">Processus</span><h2>Un déroulé simple en 3 étapes.</h2></div></div><div class="steps-grid"><article class="panel step-card"><h4>1. Échange sur votre besoin</h4><p>On valide le besoin, le budget et les priorités avant de commencer.</p></article><article class="panel step-card"><h4>2. Validation de la configuration</h4><p>Les composants sont vérifiés pour assurer compatibilité et équilibre.</p></article><article class="panel step-card"><h4>3. Montage, tests et livraison</h4><p>Le PC est assemblé, testé puis livré avec les explications nécessaires.</p></article></div></div></section>
+    <section class="section" id="faq"><div class="container"><div class="section-head"><div><span class="eyebrow">FAQ</span><h2>Questions fréquentes</h2></div></div><div class="faq-grid"><article class="panel faq-card"><h4>Quels sont les délais ?</h4><p>En général, 2 à 5 jours ouvrés selon la configuration, hors délai de livraison des pièces.</p></article><article class="panel faq-card"><h4>Quelle garantie ?</h4><p>Garantie constructeur sur les pièces, et assistance liée au montage selon la formule choisie.</p></article><article class="panel faq-card"><h4>Puis-je fournir mes composants ?</h4><p>Oui. Nous vérifions la compatibilité avant le montage.</p></article></div></div></section>
+    <section class="section" id="contact"><div class="container"><div class="contact-grid"><article class="panel contact-card"><span class="eyebrow">Contact direct</span><h2 style="font-size: clamp(2rem, 3vw, 2.8rem); letter-spacing: -0.04em; line-height: 1.04; margin-top: 0.6rem;">Parlons de votre projet.</h2><p style="margin-top: 1rem; color: var(--color-text-muted);">Décrivez votre besoin, nous vous répondons rapidement.</p><div class="contact-lines"><div class="contact-item"><strong>Email</strong><br><a href="mailto:2rservices.contact@gmail.com">2rservices.contact@gmail.com</a></div><div class="contact-item"><strong>Téléphone</strong><br><a href="tel:+33621724113">+33 6 21 72 41 13</a></div><div class="contact-item"><strong>Zone desservie</strong><br>Livraison partout en France</div></div></article><section class="panel contact-form" aria-labelledby="form-title" role="form"><span class="eyebrow">Demander un devis</span><h2 id="form-title" style="font-size: var(--text-xl); margin: 0.6rem 0 1rem;">Demander un devis</h2><form id="contactForm" action="https://formsubmit.co/2rservices.contact@gmail.com" method="POST">
+              <input type="hidden" name="_subject" value="Nouvelle demande 2R Services">
+              <input type="hidden" name="_captcha" value="false">
+              <div class="form-group"><label for="nom">Nom *</label><input type="text" id="nom" name="nom" placeholder="Votre nom" required aria-required="true"><span class="error-message" aria-live="polite"></span></div><div class="form-group"><label for="email">Email *</label><input type="email" id="email" name="email" placeholder="vous@email.com" required aria-required="true"><span class="error-message" aria-live="polite"></span></div><div class="form-group"><label for="projet">Type de projet *</label>
+                <select id="projet" name="projet" required aria-required="true">
+                  <option value="">Choisissez...</option>
+                  <option value="Prestations">Prestations</option>
+                </select></div><div class="form-group"><label for="message">Message *</label><textarea id="message" name="message" placeholder="Budget, composants déjà achetés, délais souhaités, style du setup..." rows="5" required aria-required="true"></textarea><span class="error-message" aria-live="polite"></span></div><button type="submit" class="btn btn-primary" aria-label="Envoyer la demande de devis">Envoyer la demande</button></form><div id="form-message" class="form-message" aria-live="polite" role="status"></div></section></div></div></section>
+  </main>
+<footer><div class="container footer-inner"><p>© 2026 2R Services</p></div></footer>
+  
+</body>
+</html>
